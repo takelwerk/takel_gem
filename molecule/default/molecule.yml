@@ -7,7 +7,7 @@ lint: |
   ansible-lint .
   flake8
 platforms:
-  - name: molecule-takel-gem
+  - name: molecule_takel_gem
     image: takelwerk/takelruby
     command: /usr/bin/tail -f /dev/null
     privileged: false
@@ -27,8 +27,7 @@ provisioner:
 verifier:
   name: testinfra
   options:
-    # p: cacheprovider  # enable cache
-    s: true  # capture output
+    s: true
   additional_files_or_dirs:
     - ../system/test_*.py
 scenario:
