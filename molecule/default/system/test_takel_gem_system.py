@@ -26,9 +26,8 @@ MyCLI.start(ARGV)"""
                 mode='0755')
     task = dict(action=dict(module='copy',
                             args=args))
-    playbook['tasks'].append(task)
-    moleculebook.set(playbook)
-    moleculebook.run()
+    playbook[0]['tasks'].append(task)
+    moleculebook.run(playbook)
 
     thor_file = host.file(thor_file_path)
 
@@ -42,6 +41,5 @@ MyCLI.start(ARGV)"""
 def get_thor_output(host, thor_file):
     return host.check_output('/tmp/thor_file.rb hello World')
 
-
-def test_takel_thor_system_available(thor_output):
+def test_takel_thor_system_available(thor_output, host):
     assert thor_output == 'Hello World'
